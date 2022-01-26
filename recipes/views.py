@@ -3,7 +3,7 @@ from utils.recipes.factory import make_recipe
 
 def home(request):
     return render(request, 'recipes/pages/home.html', context={
-        'recipe': [make_recipe() for _ in range(10)],
+        'recipes': [make_recipe() for _ in range(10)],
     })
 
 
