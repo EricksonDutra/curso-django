@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.shortcuts import redirect, render
 from django.urls import reverse
+from recipes.models import Recipe
 
 from .forms import LoginForm, RegisterForm
 
@@ -47,26 +48,25 @@ def login_view(request):
 
 def login_create(request):
     if not request.POST:
-        raise Http404
+        raise Http404()
 
     form = LoginForm(request.POST)
 
     if form.is_valid():
-        authenticate_user = authenticate(
+        authenticated_user = authenticate(
             username=form.cleaned_data.get('username', ''),
             password=form.cleaned_data.get('password', ''),
         )
 
-        if authenticate_user is not None:
-            messages.success(request, 'You are looged in')
-            login(request, authenticate_user)
-            return redirect(dashboard)
+        if authenticated_user is not None:
+            messages.success(request, 'Your are logged in.')
+            login(request, authenticated_user)
+        else:
+            messages.error(request, 'Invalid credentials')
+    else:
+        messages.error(request, 'Invalid username or password')
 
-        messages.error(request, 'Invalid credentials')
-        return redirect(dashboard)
-
-    messages.error(request, 'Invalid username or password')
-    return redirect(dashboard)
+    return redirect(reverse('authors:dashboard'))
 
 
 @login_required(login_url='authors:login', redirect_field_name='next')
@@ -86,4 +86,34 @@ def logout_view(request):
 
 @login_required(login_url='authors:login', redirect_field_name='next')
 def dashboard(request):
-    return render(request, 'authors/pages/dashboard.html')
+    recipes = Recipe.objects.filter(
+        is_published=False,
+        author=request.user
+    )
+    return render(
+        request,
+        'authors/pages/dashboard.html',
+        context={
+            'recipes': recipes,
+        }
+    )
+
+
+@login_required(login_url='authors:login', redirect_field_name='next')
+def dashboard_recipe_edit(request, id):
+    recipe = Recipe.objects.filter(
+        is_published=False,
+        author=request.user,
+        pk=id,
+    )
+
+    if not recipe:
+        raise Http404
+
+    return render(
+        request,
+        'authors/pages/dashboard_recipe.html',
+        context={
+
+        }
+    )
