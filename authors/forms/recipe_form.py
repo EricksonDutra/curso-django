@@ -11,14 +11,14 @@ class AuthorRecipeForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self._errors = defaultdict(list)
+        self._my_errors = defaultdict(list)
 
         add_attr(self.fields.get('preparation_steps'), 'class', 'span-2')
 
     class Meta:
         model = Recipe
-        fields = 'title', 'description', 'preparation_time',\
-            'preparation_time_unit', 'servings', 'servings_unit',\
+        fields = 'title', 'description', 'preparation_time', \
+            'preparation_time_unit', 'servings', 'servings_unit', \
             'preparation_steps', 'cover'
         widgets = {
             'cover': forms.FileInput(
