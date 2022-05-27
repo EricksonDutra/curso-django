@@ -100,7 +100,12 @@ a {
 }
 
 .main-logo-icon {
-  margin-right: 2rem;
+  margin-right: 5rem;
+}
+
+.logoimg{
+  width: 200px;
+  position: static;
 }
 
 .search-form {
