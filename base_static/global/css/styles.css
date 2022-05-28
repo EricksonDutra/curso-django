@@ -89,7 +89,7 @@ a {
 
 .main-logo {
   font-size: 4rem;
-  color: var(--r-white);
+  color: var(--color-white);
   text-decoration: none;
   display: flex;
   flex-flow: row nowrap;
@@ -101,17 +101,6 @@ a {
 
 .main-logo-icon {
   margin-right: 5rem;
-}
-
-.logoimg {
-  width: 110px;
-  flex-wrap: wrap;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  min-height: 100vh;
-  overflow-y: auto;
 }
 
 .search-form {
@@ -482,7 +471,7 @@ a {
 
 .menu-container {
   position: fixed;
-  top: 0;
+  top: 11rem;
   left: 0;
   bottom: 0;
   width: 260px;
@@ -504,7 +493,7 @@ a {
 .button-show-menu {
   position: fixed;
   left: 265px;
-  top: 2rem;
+  top: 11rem;
   color: var(--color-white);
   background-color: #7A4323;
   border: none;
