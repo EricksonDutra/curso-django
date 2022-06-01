@@ -25,3 +25,4 @@ class RecipeAdmin(admin.ModelAdmin):
 
 admin.site.register(Category, CategoryAdmin)
 # asdf
+# teste
