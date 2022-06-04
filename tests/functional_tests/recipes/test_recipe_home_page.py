@@ -17,7 +17,7 @@ class RecipeHomePageFunctionalTest(RecipeBaseFunctionalTest):
         self.browser.get(self.live_server_url)
         body = self.browser.find_element(By.TAG_NAME, 'body')
         # self.sleep()
-        self.assertIn('No recipes found here', body.text)
+        self.assertIn('Não encontramos receitas aqui', body.text)
 
     @patch('recipes.views.PER_PAGE', new=2)
     def test_recipe_search_input_can_find_correc_recipes(self):

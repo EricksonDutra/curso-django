@@ -1,4 +1,6 @@
+
 {% extends 'global/base.html' %}
+{% load i18n %}
 
 {% block title %}Dashboard ({{ user }}) | {% endblock title %}
 
@@ -10,7 +12,7 @@
     {% include 'global/partials/messages.html' %}
 
     <div class="authors-dashboard-container">
-      <h3>Your recipes</h3>
+      <h3>{% translate "Suas receitas" %} </h3>
 
       <ul>
         {% for recipe in recipes %}
@@ -28,7 +30,7 @@
           </li>
         {% empty %}
           <li>
-            <p>You do not have recipes, please create one.</p>
+            <p>{% translate "You do not have recipes, please create one." %} </p>
           </li>
         {% endfor %}
       </ul>
