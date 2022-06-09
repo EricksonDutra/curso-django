@@ -1,7 +1,7 @@
 :root {
   --color-primary: #269fe6;
   --color-primary-hover: #2086c2;
-  --color-primary-dark: #13141f;
+  --color-primary-dark: #AC7D88;
   --color-primary-dark-hover: #212336;
   --color-primary-light: #d4ecfa;
   --color-primary-light-hover: #bdd8e7;
@@ -25,7 +25,7 @@
   --color-error-dark: #da525d;
 
   --color-gray-0: #f9f9f9;
-  --color-gray-1: #e0e0e0;
+  --color-gray-1: #F8ECD1;
   --color-gray-2: #c7c7c7;
   --color-gray-3: #aeaeae;
   --color-gray-4: #959595;
@@ -100,7 +100,7 @@ a {
 }
 
 .main-logo-icon {
-  margin-left: 5rem;
+  margin-left: 3rem;
 }
 
 .log{
