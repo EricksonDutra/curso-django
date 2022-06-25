@@ -7,12 +7,12 @@ from utils.django_forms import add_placeholder, strong_password
 class RegisterForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        add_placeholder(self.fields['username'], 'Seu username')
+        add_placeholder(self.fields['username'], 'Seu usuário')
         add_placeholder(self.fields['email'], 'Seu e-mail')
-        add_placeholder(self.fields['nome'], 'Ex.: John')
-        add_placeholder(self.fields['Sobrenome'], 'Ex.: Doe')
-        add_placeholder(self.fields['password'], 'Sua password')
-        add_placeholder(self.fields['password2'], 'Repita sua password')
+        add_placeholder(self.fields['first_name'], 'Ex.: John')
+        add_placeholder(self.fields['last_name'], 'Ex.: Doe')
+        add_placeholder(self.fields['password'], 'Sua senha')
+        add_placeholder(self.fields['password2'], 'Repita sua senha')
 
     username = forms.CharField(
         label='Username',
@@ -31,11 +31,11 @@ class RegisterForm(forms.ModelForm):
     )
     first_name = forms.CharField(
         error_messages={'required': 'Escreva seu nome'},
-        label='nome'
+        label='Nome'
     )
     last_name = forms.CharField(
         error_messages={'required': 'Escreva seu sobre nome'},
-        label='sobrenome'
+        label='Sobrenome'
     )
     email = forms.EmailField(
         error_messages={'required': 'E-mail é obrigatório'},
@@ -48,18 +48,18 @@ class RegisterForm(forms.ModelForm):
             'required': 'Senha não pode ser vazio'
         },
         help_text=(
-            'Password must have at least one uppercase letter, '
-            'one lowercase letter and one number. The length should be '
-            'at least 8 characters.'
+            'Senha precisa ter pelo menos uma letra maiúscula, '
+            'uma letra minúscula e um número. O tamanho deve ser '
+            'até 8 caracteres.'
         ),
         validators=[strong_password],
-        label='Password'
+        label='Senha'
     )
     password2 = forms.CharField(
         widget=forms.PasswordInput(),
-        label='Password2',
+        label='Senha2',
         error_messages={
-            'required': 'Please, repeat your password'
+            'required': 'Por favor, repita sua senha'
         },
     )
 
@@ -79,7 +79,7 @@ class RegisterForm(forms.ModelForm):
 
         if exists:
             raise ValidationError(
-                'User e-mail is already in use', code='invalid',
+                'Email do usuário já esta em uso', code='invalid',
             )
 
         return email
@@ -92,7 +92,7 @@ class RegisterForm(forms.ModelForm):
 
         if password != password2:
             password_confirmation_error = ValidationError(
-                'Password and password2 must be equal',
+                'Senha e senha2 precisam ser iguais',
                 code='invalid'
             )
             raise ValidationError({

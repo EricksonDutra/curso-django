@@ -1,11 +1,11 @@
 {% load i18n %}
 {% if user.is_authenticated %}
 <div class="login-message">
-  {% translate "Your are logged in with" %}  
+  " Você está logado como "  
   {{ request.user.username }}. 
-  <a href="{% url 'authors:dashboard' %}">{% translate "See your recipe" %}</a>, 
-  <a href="{% url 'authors:dashboard_recipe_new' %}">{% translate "create a new recipe " %} </a> {% translate "or" %}   
+  <a href="{% url 'authors:dashboard' %}"> Veja suas receitas</a>, 
+  <a href="{% url 'authors:dashboard_recipe_new' %}">Crie uma nova receita</a> ou   
   {% include 'authors/partials/form_logout.html' %}
-  <a class="authors-logout-link" href="#">{% translate "click here" %} </a> {% translate "to logout." %}
+  <a class="authors-logout-link" href="#">clique aqui</a> para sair
 </div>
 {% endif %}
