@@ -1,7 +1,7 @@
 {% load i18n %}
 {% if user.is_authenticated %}
 <div class="login-message">
-  " Você está logado como "  
+  Você está logado como  
   {{ request.user.username }}. 
   <a href="{% url 'authors:dashboard' %}"> Veja suas receitas</a>, 
   <a href="{% url 'authors:dashboard_recipe_new' %}">Crie uma nova receita</a> ou   

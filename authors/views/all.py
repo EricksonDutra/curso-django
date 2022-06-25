@@ -29,7 +29,7 @@ def register_create(request):
         user = form.save(commit=False)
         user.set_password(user.password)
         user.save()
-        messages.success(request, 'Your user is created, please log in.')
+        messages.success(request, 'Seu usuário foi criado, faça seu login.')
 
         del(request.session['register_form_data'])
         return redirect(reverse('authors:login'))
@@ -58,12 +58,12 @@ def login_create(request):
         )
 
         if authenticated_user is not None:
-            messages.success(request, 'Your are logged in.')
+            messages.success(request, 'Você está logado.')
             login(request, authenticated_user)
         else:
-            messages.error(request, 'Invalid credentials')
+            messages.error(request, 'Credenciais inválidas')
     else:
-        messages.error(request, 'Invalid username or password')
+        messages.error(request, 'Usuário ou senha inválido')
 
     return redirect(reverse('authors:dashboard'))
 
@@ -71,14 +71,14 @@ def login_create(request):
 @login_required(login_url='authors:login', redirect_field_name='next')
 def logout_view(request):
     if not request.POST:
-        messages.error(request, 'Invalid logout request')
+        messages.error(request, 'Login inválido')
         return redirect(reverse('authors:login'))
 
     if request.POST.get('username') != request.user.username:
-        messages.error(request, 'Invalid logout user')
+        messages.error(request, 'Logout do usuário inválido')
         return redirect(reverse('authors:login'))
 
-    messages.success(request, 'Logged out successfully')
+    messages.success(request, 'Você deslogou com sucesso.')
     logout(request)
     return redirect(reverse('authors:login'))
 

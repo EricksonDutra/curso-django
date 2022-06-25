@@ -78,5 +78,5 @@ class DashboardRecipeDelete(DashboardRecipe):
     def post(self, *args, **kwargs):
         recipe = self.get_recipe(self.request.POST.get('id'))
         recipe.delete()
-        messages.success(self.request, 'Deleted successfully.')
+        messages.success(self.request, 'Deletado com sucesso.')
         return redirect(reverse('authors:dashboard'))
