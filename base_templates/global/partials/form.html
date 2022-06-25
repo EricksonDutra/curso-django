@@ -9,7 +9,7 @@
   >
     {% csrf_token %}
 
-    <div class="form-content form-content-grid">
+    <div class="form-content">
       {% for field in form %}
         <div class="form-group {{ field.field.widget.attrs.class }}">
           <label for="{{ field.id_for_label }}">{{ field.label }}</label>
@@ -31,7 +31,7 @@
     </div>
 
     {% if form.errors %}
-    <div class="form-content form-content-grid">
+    <div class="form-content">
       <div class="form-group">
         <div class="message message-error">
           {% comment %} {% translate "There are errors in the form, please fix them and send again." %}  {% endcomment %}
