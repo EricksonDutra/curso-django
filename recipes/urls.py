@@ -55,7 +55,6 @@ urlpatterns = [
         views.theory,
         name='theory',
     ),
-
     path(
         'recipes/api/v2/tag/<int:pk>/',
         views.tag_api_detail,
@@ -77,6 +76,6 @@ urlpatterns = [
         TokenVerifyView.as_view(),
         name='token_verify'
     ),
-
+    # Por último
     path('', include(recipe_api_v2_router.urls)),
 ]

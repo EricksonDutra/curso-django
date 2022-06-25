@@ -19,7 +19,8 @@ class RecipeSerializer(serializers.ModelSerializer):
             'category', 'tags', 'public', 'preparation',
             'tag_objects', 'tag_links',
             'preparation_time', 'preparation_time_unit', 'servings',
-            'servings_unit', 'preparation_steps', 'cover'
+            'servings_unit',
+            'preparation_steps', 'cover'
         ]
 
     public = serializers.BooleanField(
@@ -57,7 +58,7 @@ class RecipeSerializer(serializers.ModelSerializer):
         super_validate = super().validate(attrs)
         AuthorRecipeValidator(
             data=attrs,
-            ErrorClass=serializers.ValidationError
+            ErrorClass=serializers.ValidationError,
         )
         return super_validate
 
