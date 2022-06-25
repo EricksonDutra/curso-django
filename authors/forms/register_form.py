@@ -7,43 +7,45 @@ from utils.django_forms import add_placeholder, strong_password
 class RegisterForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        add_placeholder(self.fields['username'], 'Your username')
-        add_placeholder(self.fields['email'], 'Your e-mail')
-        add_placeholder(self.fields['first_name'], 'Ex.: John')
-        add_placeholder(self.fields['last_name'], 'Ex.: Doe')
-        add_placeholder(self.fields['password'], 'Type your password')
-        add_placeholder(self.fields['password2'], 'Repeat your password')
+        add_placeholder(self.fields['username'], 'Seu username')
+        add_placeholder(self.fields['email'], 'Seu e-mail')
+        add_placeholder(self.fields['nome'], 'Ex.: John')
+        add_placeholder(self.fields['Sobrenome'], 'Ex.: Doe')
+        add_placeholder(self.fields['password'], 'Sua password')
+        add_placeholder(self.fields['password2'], 'Repita sua password')
 
     username = forms.CharField(
         label='Username',
         help_text=(
-            'Username must have letters, numbers or one of those @.+-_. '
-            'The length should be between 4 and 150 characters.'
+            # 'Username must have letters, numbers or one of those @.+-_. '
+            # 'The length should be between 4 and 150 characters.'
+            'Username precisa conter letras, números e um caractere especial'
+            'Deve conter entre 4 e 150 caracteres'
         ),
         error_messages={
-            'required': 'This field must not be empty',
-            'min_length': 'Username must have at least 4 characters',
-            'max_length': 'Username must have less than 150 characters',
+            'required': 'Este campo não pode ser vazio',
+            'min_length': 'Username deve ter pelo menos 4 caracteres',
+            'max_length': 'Username deve ser menor que 150 caracteres',
         },
         min_length=4, max_length=150,
     )
     first_name = forms.CharField(
-        error_messages={'required': 'Write your first name'},
-        label='First name'
+        error_messages={'required': 'Escreva seu nome'},
+        label='nome'
     )
     last_name = forms.CharField(
-        error_messages={'required': 'Write your last name'},
-        label='Last name'
+        error_messages={'required': 'Escreva seu sobre nome'},
+        label='sobrenome'
     )
     email = forms.EmailField(
-        error_messages={'required': 'E-mail is required'},
+        error_messages={'required': 'E-mail é obrigatório'},
         label='E-mail',
-        help_text='The e-mail must be valid.',
+        help_text='O email deve ser válido.',
     )
     password = forms.CharField(
         widget=forms.PasswordInput(),
         error_messages={
-            'required': 'Password must not be empty'
+            'required': 'Senha não pode ser vazio'
         },
         help_text=(
             'Password must have at least one uppercase letter, '

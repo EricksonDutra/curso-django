@@ -34,7 +34,8 @@
     <div class="form-content form-content-grid">
       <div class="form-group">
         <div class="message message-error">
-          {% translate "There are errors in the form, please fix them and send again." %} 
+          {% comment %} {% translate "There are errors in the form, please fix them and send again." %}  {% endcomment %}
+          "Há erros no formulário, por favor corrija-os e envie novamente."
         </div>
       </div>
     </div>
@@ -42,7 +43,7 @@
 
     <div class="form-content form-content-grid">
       <div class="form-group">
-        <button type="submit">{% translate "Send" %} </button>
+        <button type="submit">Enviar</button>
       </div>
     </div>
   </form>
