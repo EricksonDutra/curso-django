@@ -129,3 +129,7 @@ gunicorn-error-log
 db.sqlite3
 db copy.sqlite3
 static/
+
+authors/__pycache__
+recipes/__pycache__
+recipes/__pycache__
