@@ -5,6 +5,6 @@ from rest_framework.serializers import ModelSerializer
 class AuthorSerializer(ModelSerializer):
     class Meta:
         model = get_user_model()
-        fieds = [
+        fields = [
             'id', 'username', 'first_name', 'last_name', 'email'
         ]
